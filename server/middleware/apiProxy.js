@@ -37,6 +37,16 @@ function apiProxy(apiHostsMap) {
       if (utils.isErrorStatus(status)) {
         res.status(status);
       }
+
+      // allow us to pass cookies from api to our page
+      if(response.proxyCookie && response.proxyCookie.length){
+        response.proxyCookie.forEach(function(val){
+          if(val.length){
+            res.cookie(val[0], val[1], val[2]);
+          }
+        })
+      }
+
       res.json(body);
     });
   };
