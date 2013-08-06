@@ -14,7 +14,7 @@
   "dependencies": {
     "underscore": "1.4.4",
     "backbone": "1.0.0",
-    "handlebars": "git@github.com:eGood/handlebars.git",
+    "handlebars": "git://github.com/eGood/handlebars.git",
     "async":"0.1.22",
     "qs": "0.5.1",
     "express": "~3.0.6",
