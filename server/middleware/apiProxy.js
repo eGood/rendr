@@ -39,13 +39,13 @@ function apiProxy(apiHostsMap) {
       }
 
       // allow us to pass cookies from api to our page
-      if(response.proxyCookie && response.proxyCookie.length){
-        response.proxyCookie.forEach(function(val){
-          if(val.length){
-            res.cookie(val[0], val[1], val[2]);
-          }
-        })
-      }
+      // if(response.proxyCookie && response.proxyCookie.length){
+      //   response.proxyCookie.forEach(function(val){
+      //     if(val.length){
+      //       res.cookie(val[0], val[1], val[2]);
+      //     }
+      //   })
+      // }
 
       res.json(body);
     });

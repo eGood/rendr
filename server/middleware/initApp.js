@@ -10,19 +10,28 @@
 module.exports = function(appAttributes) {
   appAttributes = appAttributes || {};
   return function(req, res, next) {
+    console.log( typeof app );
     var App, app;
 
     App = require(rendr.entryPath + '/app/app');
 
     // Pass any config that needs to be accessible by the client
     // and server into the app.
-    app = new App(appAttributes);
+    var appOptions = {
+      /**
+       * Hold on to a copy of the original request, so we can pull headers, etc.
+       * This will only be accessible on the server.
+       */
+      req: req
+    };
+
+    app = new App(appAttributes, appOptions);
 
     // Hold on to a copy of the original request, so we can pull headers, etc.
-    app.req = req;
+    // app.req = req;
 
     // call postInitialize after we know we have the req object
-    app.postInitialize();
+    //app.postInitialize();
     
     // Stash on the request so can be accessed elsewhere.
     req.rendrApp = app;

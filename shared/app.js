@@ -24,7 +24,16 @@ module.exports = Backbone.Model.extend({
   /*
   * @shared
   */
-  initialize: function() {
+  initialize: function( attributes, options ) {
+    //console.log( options );
+    this.options = options || {};
+    /**
+     * On the server-side, you can access the Express request, `req`.
+     */
+    if (this.options.req) {
+      this.req = this.options.req;
+    }
+
     this.fetcher = new Fetcher({
       app: this
     });
@@ -33,8 +42,10 @@ module.exports = Backbone.Model.extend({
         app: this
       });
       // server side calls this in /server/initApp
-      this.postInitialize();
     }
+
+    this.postInitialize();
+    
     
   },
 

@@ -48,7 +48,7 @@ module.exports = {
     options = block.hash || {};
     data = _.isEmpty(options) ? this : options.context ? options.context : options;
     data = _.clone(data);
-    data._app = data._app || this._app;
+    data._app = data._app || this._app || block.data._app;
     html = template(data);
     return new Handlebars.SafeString(html);
   },
