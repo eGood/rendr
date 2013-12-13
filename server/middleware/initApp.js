@@ -10,7 +10,7 @@
 module.exports = function(appAttributes) {
   appAttributes = appAttributes || {};
   return function(req, res, next) {
-    console.log( typeof app );
+
     var App, app;
 
     App = require(rendr.entryPath + '/app/app');
